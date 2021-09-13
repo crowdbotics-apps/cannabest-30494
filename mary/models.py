@@ -12,12 +12,12 @@ class Benefit(models.Model):
 class Terpene(models.Model):
     "Generated Model"
     name = models.CharField(
-        max_length=256,
         blank=True,
+        max_length=256,
     )
     also_found_in = models.CharField(
-        max_length=256,
         blank=True,
+        max_length=256,
     )
     aromas = models.ManyToManyField(
         "mary.Aroma",
@@ -47,6 +47,29 @@ class Aroma(models.Model):
     "Generated Model"
     name = models.CharField(
         max_length=256,
+    )
+
+
+class Strain(models.Model):
+    "Generated Model"
+    name = models.CharField(
+        max_length=256,
+    )
+    aliases = models.CharField(
+        max_length=512,
+    )
+    description = models.TextField()
+    effects = models.ManyToManyField(
+        "mary.Effect",
+        related_name="strain_effects",
+    )
+    aromas = models.ManyToManyField(
+        "mary.Aroma",
+        related_name="strain_aromas",
+    )
+    terpenes = models.ManyToManyField(
+        "mary.Terpene",
+        related_name="strain_terpenes",
     )
 
 

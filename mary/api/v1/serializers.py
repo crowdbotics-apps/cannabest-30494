@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from mary.models import Aroma, Benefit, Effect, Terpene
+from mary.models import Aroma, Benefit, Effect, Strain, Terpene
 
 
 class BenefitSerializer(serializers.ModelSerializer):
@@ -23,4 +23,10 @@ class EffectSerializer(serializers.ModelSerializer):
 class AromaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aroma
+        fields = "__all__"
+
+
+class StrainSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Strain
         fields = "__all__"

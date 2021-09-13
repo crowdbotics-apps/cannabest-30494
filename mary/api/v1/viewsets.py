@@ -1,9 +1,10 @@
 from rest_framework import authentication
-from mary.models import Aroma, Benefit, Effect, Terpene
+from mary.models import Aroma, Benefit, Effect, Strain, Terpene
 from .serializers import (
     AromaSerializer,
     BenefitSerializer,
     EffectSerializer,
+    StrainSerializer,
     TerpeneSerializer,
 )
 from rest_framework import viewsets
@@ -43,3 +44,12 @@ class AromaViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Aroma.objects.all()
+
+
+class StrainViewSet(viewsets.ModelViewSet):
+    serializer_class = StrainSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Strain.objects.all()
